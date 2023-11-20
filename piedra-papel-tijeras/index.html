@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Escoge tu mano</h1>
+
+    <div id="container">
+        <div>
+            <button id="piedra" onclick="piedra()"><img src="imagenes/piedra.png" alt=""></button>
+        </div>
+        <div>
+            <button id="papel" onclick="papel()"><img src="imagenes/papel.png" alt=""></button>
+        </div>
+        <div>
+            <button id="tijeras" onclick="tijeras()"><img src="imagenes/tijeras.png" alt=""></button>
+        </div>
+    </div>
+<br><br>
+   <h3 id="jugador">Jugador: 0</h3>
+   <h3 id="maquina">Máquina: 0</h3>
+
+    <script>
+        alert("Juguemos a piedra,papel o tijeras!!")
+       var j=0;
+       var m=0;
+       
+      var jugador;
+      var elegido;
+
+    const eligePc=[
+        "piedra","papel","tijeras"
+    ]
+    function reiniciar(){
+
+   
+    var aleatorio=Math.floor(Math.random()*eligePc.length);
+     elegido=eligePc[aleatorio];
+    console.log(elegido)
+    }
+   function piedra(){
+    jugador="piedra"
+    comparar()
+   }
+   function papel(){
+    jugador="papel"
+    comparar()
+   }
+   function tijeras(){
+
+    jugador="tijeras"
+    comparar()
+   }
+
+   function comparar(){
+    if(jugador==elegido){
+        alert("¡Empate!La máquina también eligió "+elegido)
+    }else if ((jugador == "piedra" && elegido == "tijeras") ||
+                   (jugador == "papel" && elegido == "piedra") ||
+                   (jugador == "tijeras" && elegido == "papel")) {
+            alert("¡Ganaste!La máquina eligió "+ elegido);
+            j++;
+            document.getElementById("jugador").innerHTML="Jugador :" +j;
+            
+   }else{
+    (jugador=="piedra" && elegido == "papel") ||
+    (jugador=="papel" && elegido=="tijeras") ||
+    (jugador=="tijeras" && elegido=="piedra")
+    alert("¡Perdiste!La máquina eligió "+elegido)
+    m++;
+    document.getElementById("maquina").innerHTML="Máquina :"+ m;
+   }
+ reiniciar()  
+}
+window.onload=reiniciar;
+
+
+
+   </script>
+</body>
+</html>
